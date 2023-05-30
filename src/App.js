@@ -2,24 +2,29 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-
-  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todo-container">
+      <div className="todo-wrap">
+        <div className="header-box">
+          <input placeholder="请输入"></input>
+        </div>
+        <ul className="todo-main">
+          <li>
+            <label>
+              <input type="checkbox"></input>
+              <span>1111111111</span>
+            </label>
+            <button className="btn">删除</button>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox"></input>
+              <span>2222222222</span>
+            </label>
+            <button className="btn">删除</button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

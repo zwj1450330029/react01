@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+.todo-container{
+  width: 400px;
+  margin: 100px auto;
+}
+.todo-main li{
+  margin-top: 20px;
+}
+.header-box input{
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+}
