@@ -30,11 +30,28 @@ export default class App extends Component {
       }
     ]
   }
-  addItem(obj) {
+  addItem = (obj) => {
+    console.log('=====addItem')
     let { todos } = this.state;
-    let newArr = todos.unshift(obj);
+    todos.unshift(obj);
+    this.setState({ 'todos': todos })
+  }
+  changeDone = (id, done) => {
+    let { todos } = this.state;
+    let obj = todos.find(item => item.id == id)
+    if (obj) {
+      obj.done = done;
+    }
+    console.log(todos)
+    this.setState({ todos: todos })
 
-    this.setState({ 'todos': newArr })
+  }
+  deleteItem = (id) => {
+    let { todos } = this.state;
+    let newArr = todos.filter(item =>
+      item.id != id
+    )
+    this.setState({ todos: newArr })
 
   }
   render() {
@@ -43,7 +60,7 @@ export default class App extends Component {
       <div className="todo-container">
         <div className="todo-wrap">
           <Header a={1} addItem={this.addItem}></Header>
-          <List todos={this.state.todos}></List>
+          <List todos={this.state.todos} changeDone={this.changeDone} deleteItem={this.deleteItem}></List>
         </div>
       </div>
     );
