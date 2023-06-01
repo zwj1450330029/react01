@@ -1,32 +1,52 @@
-import logo from './logo.svg';
+import React, { Component } from 'react'
 import './App.css';
 
-function App() {
-  return (
-    <div className="todo-container">
-      <div className="todo-wrap">
-        <div className="header-box">
-          <input placeholder="请输入"></input>
-        </div>
-        <ul className="todo-main">
-          <li>
-            <label>
-              <input type="checkbox"></input>
-              <span>1111111111</span>
-            </label>
-            <button className="btn">删除</button>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox"></input>
-              <span>2222222222</span>
-            </label>
-            <button className="btn">删除</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  );
-}
+import List from './components/List'
+import Header from './components/Header'
 
-export default App;
+
+export default class App extends Component {
+  state = {
+    todos: [
+      {
+        id: 1,
+        name: '11111',
+        done: true
+      },
+      {
+        id: 2,
+        name: '2222',
+        done: true
+      },
+      {
+        id: 3,
+        name: '3333',
+        done: false
+      },
+      {
+        id: 4,
+        name: '4444',
+        done: true
+      }
+    ]
+  }
+  addItem(obj) {
+    let { todos } = this.state;
+    let newArr = todos.unshift(obj);
+
+    this.setState({ 'todos': newArr })
+
+  }
+  render() {
+
+    return (
+      <div className="todo-container">
+        <div className="todo-wrap">
+          <Header a={1} addItem={this.addItem}></Header>
+          <List todos={this.state.todos}></List>
+        </div>
+      </div>
+    );
+  }
+
+}
